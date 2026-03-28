@@ -1,23 +1,23 @@
 // Question 1: Basic Data Types & Functions (Difficulty: 1/5) ⭐
-/**
- * EXPECTED OUTPUT:
- * Name: John Doe, Age: 25, Height: 5.9, Is Student: true
- * BMI: 22.5
- * Grade: B
- */
+/// EXPECTED OUTPUT:
+/// Name: John Doe, Age: 25, Height: 5.9, Is Student: true
+/// BMI: 22.5
+/// Grade: B
+library;
+
 
 // 1. Create variables of different data types: String, int, double, bool
 // TODO: Add your variables here
-String name = "";
+String name = '';
 int age = 0;
-double height = 0.0;
+double height = 0;
 bool isStudent = false;
 
 // 2. Write a function called calculateBMI that takes weight (double) and height (double) as parameters and returns the BMI as a double
 // TODO: Implement the calculateBMI function
 double calculateBMI(double weight, double height) {
   // TODO: Calculate BMI = weight / (height * height)
-  double BMI = weight / (height * height);
+  var BMI = weight / (height * height);
   return BMI;
 }
 
@@ -31,31 +31,31 @@ double calculateBMI(double weight, double height) {
 String getGrade(int score) {
   // TODO: Add your logic here
   if (score >= 90 && score<=100){
-    return "A";
+    return 'A';
   }else if(score >= 80 && score <=89){
-    return "B";
+    return 'B';
   }else if(score >= 70 && score <= 79){
-    return "C";
+    return 'C';
   }else if(score >= 60 && score <= 69){
-    return "D";
+    return 'D';
   }else{
-    return "F";
+    return 'F';
   }
 }
 
 void main() {
   // TODO: Initialize your variables with appropriate values
-  name= "John Doe";
+  name= 'John Doe';
   age= 25;
   height= 5.9;
   isStudent= true;
 
   // TODO: Calculate BMI and grade
-  double bmi = calculateBMI(57.8, 1.61544);
-  String grade = getGrade(91);
+  var bmi = calculateBMI(57.8, 1.61544);
+  var grade = getGrade(91);
 
   // TODO: Use string interpolation to display the results as shown in expected output
-  print("Name: $name, Age: $age, Height: $height, Is Student: $isStudent");
-  print("BMI: $bmi");
-  print("Grade: $grade");
+  print('Name: $name, Age: $age, Height: $height, Is Student: $isStudent');
+  print('BMI: $bmi');
+  print('Grade: $grade');
 }
