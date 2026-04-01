@@ -12,6 +12,8 @@
 /// Motorcycle age: <Value> years
 library;
 
+import 'dart:io';
+
 
 // 1. Abstract Class Vehicle:
 //    - Properties: String brand, String model, int year
@@ -32,12 +34,14 @@ abstract class Vehicle {
   // Concrete method
   void displayInfo() {
     // TODO: Display vehicle information
+    stdout.write("Vehicle Info: $year $brand $model");
   }
 
   // Add a method to calculate vehicle age (current year - vehicle year)
   int calculateAge() {
     // TODO: Calculate and return vehicle age
-    return 0;
+    int currentYear = DateTime.now().year;
+    return currentYear - year;
   }
 }
 
@@ -46,24 +50,28 @@ abstract class Vehicle {
 //      - Additional property: int numberOfDoors
 //      - Override start() and stop() methods
 class Car extends Vehicle {
+  int numberOfDoors;
 
   Car(String brand, String model, int year, this.numberOfDoors)
       : super(brand, model, year);
-  int numberOfDoors;
+  
 
   @override
   void start() {
     // TODO: Implement car start method
+    print("Starting the car engine...");
   }
 
   @override
   void stop() {
     // TODO: Implement car stop method
+    print("Stopping the car engine,..");
   }
 
   @override
   void displayInfo() {
     // TODO: Override to show car-specific info as shown in expected output
+    print("Vehicle Info: $year $brand $model ($numberOfDoors doors)");
   }
 }
 
@@ -71,32 +79,53 @@ class Car extends Vehicle {
 //      - Additional property: bool hasWindshield
 //      - Override start() and stop() methods
 class Motorcycle extends Vehicle {
+  bool hasWindshield;
 
   Motorcycle(String brand, String model, int year, this.hasWindshield)
       : super(brand, model, year);
-  bool hasWindshield;
+  
 
   @override
   void start() {
     // TODO: Implement motorcycle start method
+    print("Starting the motorcycle engine...");
   }
 
   @override
   void stop() {
     // TODO: Implement motorcycle stop method
+    print("Stopping the motorcycle engine...");
   }
+
 
   @override
   void displayInfo() {
     // TODO: Override to show motorcycle-specific info as shown in expected output
+    print("Vehicle Info: $year $brand $model (Has windshield: $hasWindshield)");
   }
 }
 
 void main() {
   // 3. Create a list of vehicles and demonstrate polymorphism by calling start(), stop(), and displayInfo() on each vehicle
-  // TODO: Create a list containing one Car and one Motorcycle
+  // TODO: Create a list containing one Car and one Motorcycle\
+
+  List<Vehicle> fleet = [
+    Car("Toyota", "Camry", 2020, 4),
+    Motorcycle("Honda", "CBR", 2021, true)
+  ];
 
   // TODO: Loop through the list and call displayInfo(), start(), and stop()
 
+  for (var vehicle in fleet){
+    vehicle.displayInfo();
+    vehicle.start();
+    vehicle.stop();
+    print("");
+  }
+
   // TODO: Print the age of each vehicle using calculateAge()
+
+  print("Car age: ${fleet[0].calculateAge()} years");
+  print("Car age: ${fleet[1].calculateAge()} years");
+
 }
